@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-LOCAL_OUTPUT_DIR="../output"
-LOCAL_OUTPUT_FILE="$LOCAL_OUTPUT_DIR/movie_results.txt"
+LOCAL_OUTPUT_DIR="./output"
+LOCAL_OUTPUT_FILE="$LOCAL_OUTPUT_DIR/movie_results.csv"
 
 echo "[Output] Creating local output directory: $LOCAL_OUTPUT_DIR"
 mkdir -p "$LOCAL_OUTPUT_DIR"
