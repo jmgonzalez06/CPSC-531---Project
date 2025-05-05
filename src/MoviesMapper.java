@@ -29,7 +29,8 @@ public class MoviesMapper extends Mapper<LongWritable, Text, Text, Text> {
                     break;
                 }
             }
-
+			System.err.println("DEBUG: MOVIE emitted for movieId " + movieId + ": " + title);
+			System.err.flush();
             context.write(new Text(movieId), new Text("MOVIE," + title + "," + genre));
         }
     }
