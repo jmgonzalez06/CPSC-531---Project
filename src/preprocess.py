@@ -25,12 +25,13 @@ def main():
             if len(row) != 6:
                 continue  # Skip malformed rows
             movie_id, title, genre, avg, count, is_popular = row
-            if is_popular.strip().lower() == "yes":
-                try:
-                    avg_float = float(avg)
+            try:
+                avg_float = float(avg)
+                count_int = int(count)
+                if is_popular.strip().lower() == "yes" and count_int >= 10:
                     popular.append((avg_float, row))
-                except ValueError:
-                    continue  # Skip rows with bad numeric values
+            except ValueError:
+                continue  # Skip rows with bad numeric values
 
     # Sort by avgRating descending
     popular.sort(key=lambda x: x[0], reverse=True)
@@ -47,7 +48,7 @@ def main():
         for _, row in popular:
             writer.writerow(row)
 
-    print(f"✅ Wrote {len(popular)} movies to:")
+    print(f"Wrote {len(popular)} movies to:")
     print(f"- {TXT_OUTPUT}")
     print(f"- {CSV_OUTPUT}")
 
