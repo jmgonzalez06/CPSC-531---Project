@@ -11,8 +11,8 @@ hdfs dfs -mkdir -p /input/ratings
 hdfs dfs -mkdir -p /input/movies
 
 echo "[Setup] Uploading dataset files..."
-hdfs dfs -put ../data/u.data /input/ratings/
-hdfs dfs -put ../data/u.item /input/movies/
+hdfs dfs -put ./data/u.data /input/ratings/
+hdfs dfs -put ./data/u.item /input/movies/
 
 echo "[Setup] HDFS setup complete."
 

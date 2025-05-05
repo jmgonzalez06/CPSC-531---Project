@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd ../src
+cd ./src
 
 echo "[Compile] Cleaning old classes..."
 rm -rf classes
