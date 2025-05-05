@@ -15,6 +15,9 @@ public class MovieReducer extends Reducer<Text, Text, Text, Text> {
     @Override
     protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         // Initialize variables for ratings and metadata
+		if (key.toString().equals("1")) {
+			context.write(null, new Text("\"movieId\",\"title\",\"genre\",\"avgRating\",\"numRatings\",\"isPopular\""));
+		}
         String movieId = key.toString();
         String title = "Unknown";
         String genre = "Unknown";
@@ -75,8 +78,13 @@ public class MovieReducer extends Reducer<Text, Text, Text, Text> {
             }
 
             // Format output: movie_id, title, genre, avg_rating, count, rising_star
-            String output = String.format("%s,%s,%.2f,%d,%s", title, genre, avgRating, count, risingStar);
-            context.write(key, new Text(output));
+            String safeTitle = title.replace("\"", "\"\"");  // Escape internal quotes
+			String safeGenre = genre.replace("\"", "\"\"");  // (if needed)
+			String output = String.format("\"%s\",\"%s\",\"%.2f\",\"%d\",\"%s\"", safeTitle, safeGenre, avgRating, count, risingStar);
+            String csvLine = String.format("\"%s\",\"%s\",\"%s\",\"%.2f\",\"%d\",\"%s\"",
+				movieId, safeTitle, safeGenre, avgRating, count, risingStar);
+
+			context.write(null, new Text(csvLine));
 
             // Debug line to make sure output is written
             System.err.println("DEBUG: Output for movieId " + movieId + ": " + output);
