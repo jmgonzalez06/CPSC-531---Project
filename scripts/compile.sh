@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+cd ../src
+
 echo "[Compile] Cleaning old classes..."
 rm -rf classes
 mkdir -p classes
