@@ -26,7 +26,12 @@ public class MovieReducer extends Reducer<Text, Text, Text, Text> {
 
         // Process values: split into ratings and movie metadata
         for (Text val : values) {
-            String[] parts = val.toString().split(",");
+            String[] parts;
+			if (val.toString().startsWith("MOVIE|||")) {
+				parts = val.toString().split("\\|\\|\\|");
+			} else {
+				parts = val.toString().split(",");
+			}
             if (parts[0].equals("RATING") && parts.length >= 3) {
                 try {
                     ratings.add(Double.parseDouble(parts[1]));

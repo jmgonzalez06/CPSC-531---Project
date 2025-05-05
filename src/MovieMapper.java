@@ -30,7 +30,7 @@ public class MovieMapper extends Mapper<LongWritable, Text, Text, Text> {
                 }
             }
 
-            context.write(new Text(movieId), new Text("MOVIE," + title + "," + genre));
+            context.write(new Text(movieId), new Text("MOVIE|||" + title + "|||" + genre));
         }
     }
 }
