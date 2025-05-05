@@ -1,0 +1,52 @@
+Folder PATH listing for volume SUPERSAIYAN 2
+Volume serial number is 386C-A181
+G:.
+|   .gitignore
+|   README.md
+|   requirements.txt
+|   tree.txt
+|   
++---data
+|       allbut.pl
+|       mku.sh
+|       README
+|       u.data
+|       u.genre
+|       u.info
+|       u.item
+|       u.occupation
+|       u.user
+|       u1.base
+|       u1.test
+|       u2.base
+|       u2.test
+|       u3.base
+|       u3.test
+|       u4.base
+|       u4.test
+|       u5.base
+|       u5.test
+|       ua.base
+|       ua.test
+|       ub.base
+|       ub.test
+|       
+\---src
+    |   app.py
+    |   manifest.txt
+    |   MovieDriver.class
+    |   MovieDriver.java
+    |   MovieMapper.class
+    |   MovieMapper.java
+    |   MovieRating.jar
+    |   MovieReducer.class
+    |   MovieReducer.java
+    |   preprocess.py
+    |   run_hadoop.py
+    |   
+    +---META-INF
+    |       MANIFEST.MF
+    |       
+    \---templates
+            index.html
+            
