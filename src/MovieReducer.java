@@ -27,23 +27,25 @@ public class MovieReducer extends Reducer<Text, Text, Text, Text> {
         // Process values: split into ratings and movie metadata
         for (Text val : values) {
             String[] parts;
-			if (val.toString().startsWith("MOVIE|||")) {
-				parts = val.toString().split("\\|\\|\\|");
-			} else {
-				parts = val.toString().split(",");
+		if (val.toString().startsWith("MOVIE|||")) {
+			// Split only into 3 parts: type, title, genre
+			parts = val.toString().split("\\|\\|\\|", 3);
+			if (parts.length == 3) {
+				title = parts[1];
+				genre = parts[2];
 			}
-            if (parts[0].equals("RATING") && parts.length >= 3) {
-                try {
-                    ratings.add(Double.parseDouble(parts[1]));
-                    timestamps.add(Long.parseLong(parts[2]));
-                } catch (NumberFormatException e) {
-                    // Debug line to catch parsing errors
-                    System.err.println("DEBUG: Skipping invalid rating/timestamp for movieId " + movieId);
-                }
-            } else if (parts[0].equals("MOVIE") && parts.length >= 3) {
-                title = parts[1];
-                genre = parts[2];
-            }
+		} else {
+			// Assume RATING, use comma
+			parts = val.toString().split(",", 3);
+			if (parts.length == 3 && parts[0].equals("RATING")) {
+				try {
+					ratings.add(Double.parseDouble(parts[1]));
+					timestamps.add(Long.parseLong(parts[2]));
+				} catch (NumberFormatException e) {
+					System.err.println("DEBUG: Skipping invalid rating/timestamp for movieId " + movieId);
+				}
+			}
+		}
         }
 
         // Debug line to make sure ratings and metadata are collected
