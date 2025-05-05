@@ -9,12 +9,19 @@ Analyzes MovieLens data with Hadoop to show top-rated genres by decade and a "ri
 Project Structure
 
 project-root/
+
 ├── data/          # Contains u.data and u.item
+
 ├── src/           # All Java code + compiled files + jar
+
 ├── output/        # Final output.txt (copied from HDFS or local run)
+
 ├── README.md
+
 ├── run_job.sh     # Script to compile + run MapReduce
+
 └── requirements.txt
+
 
 Running the MapReduce Job
 
