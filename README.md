@@ -18,24 +18,24 @@ project-root/
 
 Running the MapReduce Job
 
-Step 1: Compile and package
+### Step 1: Compile and package
 
 cd src
 javac -classpath "$HADOOP_HOME/share/hadoop/common/:$HADOOP_HOME/share/hadoop/mapreduce/:." *.java
 jar cfm MovieRating.jar manifest.txt *.class
 
-Step 2: Upload data to HDFS
+### Step 2: Upload data to HDFS
 
 hdfs dfs -mkdir -p /input/ratings /input/movies
 hdfs dfs -put ../data/u.data /input/ratings/
 hdfs dfs -put ../data/u.item /input/movies/
 
-Step 3: Run the job
+### Step 3: Run the job
 
 hdfs dfs -rm -r /output
 hadoop jar MovieRating.jar MovieDriver /input/ratings /input/movies /output
 
-Step 4: Download results
+### Step 4: Download results
 
 hdfs dfs -get /output/part-r-00000 ../output/output.txt
 
