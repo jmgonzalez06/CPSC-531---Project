@@ -1,9 +1,13 @@
 #!/bin/bash
 set -e
 
-echo "[Output] Listing output directory..."
-hdfs dfs -ls /output-local
+LOCAL_OUTPUT_DIR="../output"
+LOCAL_OUTPUT_FILE="$LOCAL_OUTPUT_DIR/movie_results.txt"
 
-echo "[Output] Showing result content:"
-hdfs dfs -cat /output-local/part-r-00000
+echo "[Output] Creating local output directory: $LOCAL_OUTPUT_DIR"
+mkdir -p "$LOCAL_OUTPUT_DIR"
 
+echo "[Output] Saving HDFS output to $LOCAL_OUTPUT_FILE..."
+hdfs dfs -cat /output-local/part-r-00000 > "$LOCAL_OUTPUT_FILE"
+
+echo "[Output] Done. Output saved to: $LOCAL_OUTPUT_FILE"
