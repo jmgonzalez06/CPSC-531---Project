@@ -1,5 +1,0 @@
-# Python dependencies for Movie Rating Aggregator
-pyhdfs==0.3.1
-pandas==2.2.0
-flask==3.0.2
-requests==2.31.0
