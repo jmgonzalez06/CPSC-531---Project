@@ -8,4 +8,3 @@ echo "Running 2-compile.sh"
 
 echo "Running 3-output.sh"
 ./scripts/3-output.sh
-
