@@ -1,3 +1,5 @@
+package MovieRatings;
+
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
 import java.io.IOException;

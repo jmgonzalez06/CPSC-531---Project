@@ -4,6 +4,8 @@
 * Extracts genre and rating info from input CSV.
 */
 
+package MovieRatings;
+
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
 import java.io.IOException;

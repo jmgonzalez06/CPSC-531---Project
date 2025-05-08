@@ -4,6 +4,8 @@
 * Computes top-rated genres and identifies a rising star.
 */
 
+package MovieRatings;
+
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Reducer;
 import java.io.IOException;
