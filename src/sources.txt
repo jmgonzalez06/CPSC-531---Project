@@ -1,8 +1,12 @@
 ./MovieDriver.java
 ./MovieDriverTwo.java
 ./MovieReducer.java
+./UserDriverTwo.java
+./UserMovieReducer.java
 ./MovieReducerTwo.java
+./UserMapperTwo.java
 ./MovieMapper.java
 ./MovieMapperTwo.java
 ./UserMapper.java
+./RatingMapperTwo.java
 ./RatingsMapper.java
