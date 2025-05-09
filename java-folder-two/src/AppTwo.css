@@ -1,0 +1,40 @@
+.root{
+  
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    justify-content: flex-start;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    padding: 10px;
+  }
+
+.li {
+  padding: 0px;
+}
+
+.movie-banner {
+    padding: 50px;
+    width: 400px;
+    height: 400px;
+}
+
+.imageHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.buttonSelection
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
