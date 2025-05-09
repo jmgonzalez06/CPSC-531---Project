@@ -35,5 +35,4 @@ def main():
     print(f"Cleaned titles written to: {OUTPUT_FILE}")
 
 
-if __name__ == "__main__":
-    main()
+

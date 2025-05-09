@@ -65,5 +65,4 @@ def main():
         output_path = os.path.join(OUTPUT_DIR, output_filename)
         clean_file(input_path, output_path)
 
-if __name__ == "__main__":
-    main()
+
