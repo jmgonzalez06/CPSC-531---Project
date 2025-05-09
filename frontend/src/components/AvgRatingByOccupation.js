@@ -45,11 +45,12 @@ const AvgRatingsByOccupation = () => {
       {data.length === 0 ? (
         <p>Loading data...</p>
       ) : (
-        <ResponsiveContainer width="100%" height={500}>
+        <ResponsiveContainer width="100%" height={1200
+        }>
           <BarChart
             data={data}
             layout="vertical"
-            margin={{ top: 20, right: 30, left: 100, bottom: 20 }}
+            margin={{ top: 0, right: 150, left: 200, bottom: 0 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="number" domain={[0, 5]} />

@@ -41,7 +41,7 @@ const GenresByAge = () => {
 
   const barData = filteredData.map(({ ageGroup, rating }) => ({
     name: ageGroup,
-    value: rating,
+    Rating: rating,
   }));
 
   return (
@@ -60,19 +60,19 @@ const GenresByAge = () => {
       </select>
 
       {barData.length > 0 && (
-        <div style={{ width: '100%', height: 500 }}>
+        <div style={{ width: '100%', height: 1200 }}>
           <ResponsiveContainer>
             <BarChart
               data={barData}
               layout="vertical"
-              margin={{ top: 20, right: 30, left: 100, bottom: 20 }}
+              margin={{ top: 0, right: 150, left: 200, bottom: 0 }}
             >
               <XAxis type="number" />
               <YAxis dataKey="name" type="category" />
               <Tooltip formatter={(value) => value.toFixed(2)} />
               <Legend />
               <Bar
-                dataKey="value"
+                dataKey="Rating"
                 fill="#8884d8"
                 label={{ position: 'right', formatter: (value) => value.toFixed(2) }}
               >

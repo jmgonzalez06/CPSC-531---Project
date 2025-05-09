@@ -53,12 +53,12 @@ const TopGenresByOccupation = () => {
 
       <select
         className="border rounded p-2 mb-4"
-        onChange={(e) => setSelectedGenre(e.target.Rating)}
-        Rating={selectedGenre}
+        onChange={(e) => setSelectedGenre(e.target.value)}
+        value={selectedGenre}
       >
-        <option Rating="">Select Genre</option>
+        <option value="">Select Genre</option>
         {genres.map((g, i) => (
-          <option key={i} Rating={g}>{g}</option>
+          <option key={i} value={g}>{g}</option>
         ))}
       </select>
 
@@ -72,12 +72,12 @@ const TopGenresByOccupation = () => {
             >
               <XAxis type="number" />
               <YAxis dataKey="name" type="category" />
-              <Tooltip formatter={(Rating) => Rating.toFixed(2)} />
+              <Tooltip formatter={(value) => value.toFixed(2)} />
               <Legend />
               <Bar
                 dataKey="Rating"
                 fill="#8884d8"
-                label={{ position: 'right', formatter: (Rating) => Rating.toFixed(2) }}
+                label={{ position: 'right', formatter: (value) => value.toFixed(2) }}
               >
                 {barData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
