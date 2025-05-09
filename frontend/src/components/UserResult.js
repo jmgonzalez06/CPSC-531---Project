@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './UserResult.css'; // Optional styling
 
-//We're going to wait for the user_restults page to make this work
-
 const UserResult = () => {
   const [users, setUsers] = useState([]);
 

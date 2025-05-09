@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import fullStar from '../images/full-star.png';
 import halfStar from '../images/half-star.png';
 import emptyStar from '../images/empty-star.png';
-import movieImage from '../images/movie-list-image.png';
 import './MovieResult.css'; // Optional: separate CSS for styling
 
 const MovieResult = () => {
