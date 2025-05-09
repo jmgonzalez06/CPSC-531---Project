@@ -35,6 +35,8 @@ const MovieResult = () => {
               movie[cleanHeader] = parseInt(value, 10) || 0;
             } else if (cleanHeader === 'movieId') {
               movie[cleanHeader] = value.toString();
+            } else if (cleanHeader === 'genre') {
+              movie[cleanHeader] = value.split(',').map(g => g.trim());
             } else {
               movie[cleanHeader] = value;
             }
@@ -44,7 +46,8 @@ const MovieResult = () => {
         });
 
         setMovies(movieData);
-        setGenres([...new Set(movieData.map(movie => movie.genre))].sort());
+        const allGenres = movieData.flatMap(movie => movie.genre);
+setGenres([...new Set(allGenres)].sort());
       })
       .catch(err => console.error('Failed to load movie data:', err));
   }, []);
@@ -81,7 +84,7 @@ const MovieResult = () => {
 
     const filtered = movies.filter(movie => {
       const titleMatch = movie.title.toLowerCase().includes(term.toLowerCase());
-      const genreMatch = selectedGenre ? movie.genre === selectedGenre : true;
+      const genreMatch = selectedGenre ? movie.genre.includes(selectedGenre) : true;
       return titleMatch && genreMatch;
     });
     setSearchResults(filtered);
@@ -159,7 +162,7 @@ const MovieResult = () => {
       {selectedMovie && (
         <div style={{ marginTop: '20px' }}>
           <h3>Title: {selectedMovie.title}</h3>
-          <p><strong>Genre:</strong> {selectedMovie.genre}</p>
+          <p><strong>Genre:</strong> {selectedMovie.genre.join(', ')}</p>
           <p>
             <strong>Avg Rating:</strong> {renderStars(selectedMovie.avgRating)}{" "}
             <span style={{ marginLeft: '8px' }}>
