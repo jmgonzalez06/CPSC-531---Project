@@ -60,7 +60,7 @@ const GenresByAge = () => {
       </select>
 
       {barData.length > 0 && (
-        <div style={{ width: '100%', height: 1200 }}>
+        <div style={{ width: '100%', height: 400 }}>
           <ResponsiveContainer>
             <BarChart
               data={barData}
