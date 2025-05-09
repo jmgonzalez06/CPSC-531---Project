@@ -1,0 +1,18 @@
+{
+  "java.project.referencedLibraries": [
+    "/home/phillip/hadoop/share/hadoop/common/*.jar",
+    "/home/phillip/hadoop/share/hadoop/common/lib/*.jar",
+    "/home/phillip/hadoop/share/hadoop/mapreduce/*.jar",
+    "/home/phillip/hadoop/share/hadoop/mapreduce/lib/*.jar",
+    "/home/phillip/hadoop/share/hadoop/hdfs/*.jar",
+    "/home/phillip/hadoop/share/hadoop/hdfs/lib/*.jar"
+  ],
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-11",
+      "path": "/usr/lib/jvm/java-11-openjdk-amd64",
+      "default": true
+    }
+  ]
+}

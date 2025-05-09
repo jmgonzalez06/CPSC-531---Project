@@ -10,23 +10,26 @@ mkdir -p "$LOCAL_OUTPUT_DIR"
 
 #---------------- This is the output paths ----------------#
 
-echo "[Output] Saving HDFS output to $LOCAL_OUTPUT_FILE..."
+echo "[Output] Saving MovieRatings to $LOCAL_OUTPUT_FILE..."
 hdfs dfs -cat /output/MovieRatings/part-r-00000 > "$LOCAL_OUTPUT_DIR/movie_results.csv"
-hdfs dfs -cat /output/MovieRatings/part-r-00000 > "$LOCAL_OUTPUT_DIR/movie_results.txt"
 
 
-echo "[Output] Saving /output/AvgRatingByOccupation to:"
+echo "[Output] AvgRatingByOccupation to $LOCAL_OUTPUT_FILE..."
 hdfs dfs -cat /output/AvgRatingByOccupation/part-r-00000 > "$LOCAL_OUTPUT_DIR/AvgRatingByOccupation.csv"
-hdfs dfs -cat /output/AvgRatingByOccupation/part-r-00000 > "$LOCAL_OUTPUT_DIR/AvgRatingByOccupation.txt"
 
-echo "[Output] Saving /output/OccupationGenre to:"
-hdfs dfs -cat /output/OccupationGenre/part-r-00000 > "$LOCAL_OUTPUT_DIR/OccupationGenre.csv"
-hdfs dfs -cat /output/OccupationGenre/part-r-00000 > "$LOCAL_OUTPUT_DIR/OccupationGenre.txt"
+echo "[Output] TopGenresByOccupation to $LOCAL_OUTPUT_FILE..."
+hdfs dfs -cat /output/TopGenresByOccupation/part-r-00000 > "$LOCAL_OUTPUT_DIR/TopGenresByOccupation.csv"
+
+echo "[Output] TopGenreByGender to $LOCAL_OUTPUT_FILE..."
+hdfs dfs -cat /output/TopGenresByGender/part-r-00000 > "$LOCAL_OUTPUT_DIR/TopGenresByGender.csv"
+
+echo "[Output] GenresByAge to $LOCAL_OUTPUT_FILE..."
+hdfs dfs -cat /output/GenresByAge/part-r-00000 > "$LOCAL_OUTPUT_DIR/GenresByAge.csv"
 
 
-echo "[Output] Done. Output saved to: $LOCAL_OUTPUT_FILE"
+echo "[Output] Done. Outputs saved to: $LOCAL_OUTPUT_FILE"
 
 
 
-python3 ./src/preprocessing/datapreprocess.py
+#python3 ./src/preprocessing/datapreprocess.py
 python3 ./src/preprocessing/preprocess.py
