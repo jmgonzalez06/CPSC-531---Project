@@ -68,7 +68,7 @@ def main():
             writer.writerow(row)
 
     # Success message
-    print(f"✅ Cleaned and saved {len(popular)} movies to:")
+    print(f"Cleaned and saved {len(popular)} movies to:")
     print(f"- {CSV_OUTPUT}")
 
 # Run the script

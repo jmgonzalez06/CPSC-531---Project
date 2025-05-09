@@ -10,24 +10,24 @@ mkdir -p "$LOCAL_OUTPUT_DIR"
 
 #---------------- This is the output paths ----------------#
 
-echo "[Output] Saving MovieRatings to $LOCAL_OUTPUT_FILE..."
+echo "[Output] Saving MovieRatings to $LOCAL_OUTPUT_DIR..."
 hdfs dfs -cat /output/MovieRatings/part-r-00000 > "$LOCAL_OUTPUT_DIR/movie_results.csv"
 
 
-echo "[Output] AvgRatingByOccupation to $LOCAL_OUTPUT_FILE..."
+echo "[Output] AvgRatingByOccupation to $LOCAL_OUTPUT_DIR..."
 hdfs dfs -cat /output/AvgRatingByOccupation/part-r-00000 > "$LOCAL_OUTPUT_DIR/AvgRatingByOccupation.csv"
 
-echo "[Output] TopGenresByOccupation to $LOCAL_OUTPUT_FILE..."
+echo "[Output] TopGenresByOccupation to $LOCAL_OUTPUT_DIR..."
 hdfs dfs -cat /output/TopGenresByOccupation/part-r-00000 > "$LOCAL_OUTPUT_DIR/TopGenresByOccupation.csv"
 
-echo "[Output] TopGenreByGender to $LOCAL_OUTPUT_FILE..."
+echo "[Output] TopGenreByGender to $LOCAL_OUTPUT_DIR..."
 hdfs dfs -cat /output/TopGenresByGender/part-r-00000 > "$LOCAL_OUTPUT_DIR/TopGenresByGender.csv"
 
-echo "[Output] GenresByAge to $LOCAL_OUTPUT_FILE..."
+echo "[Output] GenresByAge to $LOCAL_OUTPUT_DIR..."
 hdfs dfs -cat /output/GenresByAge/part-r-00000 > "$LOCAL_OUTPUT_DIR/GenresByAge.csv"
 
 
-echo "[Output] Done. Outputs saved to: $LOCAL_OUTPUT_FILE"
+echo "[Output] Done. Outputs saved to: $LOCAL_OUTPUT_DIR"
 
 
 
