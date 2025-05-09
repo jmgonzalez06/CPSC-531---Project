@@ -33,3 +33,4 @@ echo "[Output] Done. Outputs saved to: $LOCAL_OUTPUT_FILE"
 
 #python3 ./src/preprocessing/datapreprocess.py
 python3 ./src/preprocessing/preprocess.py
+python3 ./src/preprocessing/postprocessing.py
