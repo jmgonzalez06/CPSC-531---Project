@@ -60,7 +60,7 @@ jar -cfe <output_path>.jar <MainClass> -C classes .
 This script:
 1. Creates the local `./output/` directory if it doesn’t exist.
 2. Downloads Hadoop output files from:
-   - `/output-local` -> writes `movie_results.csv` and `.txt`
+   - `/output/MovieRatings` -> writes `movie_results.csv` and `.txt`
    - `/output/avg_rating_occupation` -> writes `avg_rating_occupation.csv` and `.txt`
 3. Optionally runs Python scripts:
    - `datapreprocess.py` for early cleanup

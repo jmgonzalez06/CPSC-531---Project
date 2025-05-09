@@ -23,7 +23,7 @@ public class MovieDriver {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
-        FileOutputFormat.setOutputPath(job, new Path("/output-local"));
+        FileOutputFormat.setOutputPath(job, new Path("/output/MovieRatings"));
 
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
