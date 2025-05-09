@@ -9,6 +9,8 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class GenresByAgeDriver {
     public static void main(String[] args) throws Exception {
+
+        // Hardcoded input and output paths
         String ratingsPath = "/input/ratings/u.data";
         String usersPath = "/input/users/u.user";
         String moviesPath = "/input/movies/u.item";
@@ -33,6 +35,7 @@ public class GenresByAgeDriver {
         job.addCacheFile(new Path(moviesPath).toUri());
         FileOutputFormat.setOutputPath(job, new Path(outputPath));
 
+        //Sucess or failure message
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }

@@ -3,7 +3,6 @@ package AvgRatingByOccupation;
 
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Reducer;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +11,7 @@ public class AvgRatingByOccupationReducer extends Reducer<Text, Text, Text, Floa
     private Map<String, Integer> countMap = new HashMap<>();
     private Map<String, Float> sumMap = new HashMap<>();
 
-    @Override
+    
     protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         String occupation = null;
         float total = 0;
@@ -36,7 +35,7 @@ public class AvgRatingByOccupationReducer extends Reducer<Text, Text, Text, Floa
         }
     }
 
-    @Override
+    
     protected void cleanup(Context context) throws IOException, InterruptedException {
         for (String occ : sumMap.keySet()) {
             float avg = sumMap.get(occ) / countMap.get(occ);

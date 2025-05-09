@@ -1,7 +1,6 @@
 package TopGenresByOccupation;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
-
 import java.io.*;
 import java.util.*;
 
@@ -14,7 +13,7 @@ public class GenreMapper extends Mapper<LongWritable, Text, Text, Text> {
         "Mystery", "Romance", "Sci-Fi", "Thriller", "War", "Western"
     };
 
-    @Override
+    
     protected void setup(Context context) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("u.item"));
         String line;
@@ -34,7 +33,7 @@ public class GenreMapper extends Mapper<LongWritable, Text, Text, Text> {
         reader.close();
     }
 
-    @Override
+    
     protected void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException {
         String[] fields = value.toString().split("\t");

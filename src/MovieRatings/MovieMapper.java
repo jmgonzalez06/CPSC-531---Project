@@ -1,9 +1,3 @@
-/**
-* MovieMapper.java
-* Hadoop MapReduce Mapper to process MovieLens data.
-* Extracts genre and rating info from input CSV.
-*/
-
 package MovieRatings;
 
 import org.apache.hadoop.io.*;
@@ -11,7 +5,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import java.io.IOException;
 
 public class MovieMapper extends Mapper<LongWritable, Text, Text, Text> {
-    @Override
+    
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String[] parts = value.toString().split("\\|");
         if (parts.length >= 24) {

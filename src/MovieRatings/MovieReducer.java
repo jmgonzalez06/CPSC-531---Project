@@ -1,9 +1,3 @@
-/**
-* MovieReducer.java
-* Hadoop MapReduce Reducer to aggregate ratings by genre and decade.
-* Computes top-rated genres and identifies a rising star.
-*/
-
 package MovieRatings;
 
 import org.apache.hadoop.io.*;
@@ -14,7 +8,7 @@ import java.util.Collections;
 
 // Reducer to aggregate ratings and join with movie metadata
 public class MovieReducer extends Reducer<Text, Text, Text, Text> {
-    @Override
+    
     protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         // Initialize variables for ratings and metadata
 		if (key.toString().equals("1")) {
@@ -26,9 +20,6 @@ public class MovieReducer extends Reducer<Text, Text, Text, Text> {
         ArrayList<Double> ratings = new ArrayList<>();
         ArrayList<Long> timestamps = new ArrayList<>();
         
-        // Debug line to make sure reducer receives data for movieId
-        System.err.println("DEBUG: Reducing for movieId " + movieId);
-
         // Process values: split into ratings and movie metadata
         for (Text val : values) {
             String[] parts;
@@ -52,9 +43,6 @@ public class MovieReducer extends Reducer<Text, Text, Text, Text> {
 			}
 		}
         }
-
-        // Debug line to make sure ratings and metadata are collected
-        System.err.println("DEBUG: Collected " + ratings.size() + " ratings, title: " + title + ", genre: " + genre);
 
         // Calculate average rating and count
         if (!ratings.isEmpty()) {
@@ -82,14 +70,10 @@ public class MovieReducer extends Reducer<Text, Text, Text, Text> {
             // Format output: movie_id, title, genre, avg_rating, count, rising_star
             String safeTitle = title.replace("\"", "\"\"");  // Escape internal quotes
 			String safeGenre = genre.replace("\"", "\"\"");  // (if needed)
-			String output = String.format("\"%s\",\"%s\",\"%.2f\",\"%d\",\"%s\"", safeTitle, safeGenre, avgRating, count, risingStar);
             String csvLine = String.format("\"%s\",\"%s\",\"%s\",\"%.2f\",\"%d\",\"%s\"",
 				movieId, safeTitle, safeGenre, avgRating, count, risingStar);
 
 			context.write(null, new Text(csvLine));
-
-            // Debug line to make sure output is written
-            System.err.println("DEBUG: Output for movieId " + movieId + ": " + output);
         }
     }
 }

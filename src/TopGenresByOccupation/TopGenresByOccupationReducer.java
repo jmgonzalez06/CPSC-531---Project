@@ -2,7 +2,6 @@ package TopGenresByOccupation;
 
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Reducer;
-
 import java.io.IOException;
 import java.util.*;
 
@@ -10,7 +9,7 @@ public class TopGenresByOccupationReducer extends Reducer<Text, Text, Text, Floa
     private final Map<String, Float> sumMap = new HashMap<>();
     private final Map<String, Integer> countMap = new HashMap<>();
 
-    @Override
+    
     protected void reduce(Text key, Iterable<Text> values, Context context)
             throws IOException, InterruptedException {
 
@@ -41,7 +40,7 @@ public class TopGenresByOccupationReducer extends Reducer<Text, Text, Text, Floa
         }
     }
 
-    @Override
+    
     protected void cleanup(Context context) throws IOException, InterruptedException {
         for (String key : sumMap.keySet()) {
             float avg = sumMap.get(key) / countMap.get(key);
