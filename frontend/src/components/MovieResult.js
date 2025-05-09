@@ -31,7 +31,14 @@ const MovieResult = () => {
           
           const movie = {};
           headers.forEach((header, i) => {
-            movie[header] = ['avgRating', 'numRatings'].includes(header) ? parseFloat(values[i]) : values[i];
+            const cleanHeader = header.trim();  // 👈 clean header
+            const value = values[i]?.trim();
+            if (['avgRating', 'numRatings'].includes(cleanHeader)) {
+              const parsed = parseFloat(value);
+              movie[cleanHeader] = isNaN(parsed) ? null : parsed;
+            } else {
+              movie[cleanHeader] = value;
+            }
           });
           return movie;
         });
@@ -79,6 +86,7 @@ const MovieResult = () => {
   const handleSearchSelect = (movieId) => {
     const movie = movies.find(m => m.movieId === movieId);
     setSelectedMovie(movie);
+    console.log("Selected:", movie);
     setSearchTerm('');
     setSearchResults([]);
   };
