@@ -31,7 +31,7 @@ const MovieResult = () => {
           
           const movie = {};
           headers.forEach((header, i) => {
-            const cleanHeader = header.trim();  // 👈 clean header
+            const cleanHeader = header.trim();  // clean header
             const value = values[i]?.trim();
             if (['avgRating', 'numRatings'].includes(cleanHeader)) {
               const parsed = parseFloat(value);
