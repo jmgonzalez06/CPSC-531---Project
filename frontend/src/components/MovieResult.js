@@ -4,6 +4,8 @@ import halfStar from '../images/half-star.png';
 import emptyStar from '../images/empty-star.png';
 import './MovieResult.css'; // Optional: separate CSS for styling
 
+
+
 const MovieResult = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');

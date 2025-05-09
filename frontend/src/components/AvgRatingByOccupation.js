@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell
 } from 'recharts';
+
+const COLORS = [
+  '#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#a4de6c',
+  '#d0ed57', '#8dd1e1', '#d888d8', '#84b6f4', '#f48fb1',
+  '#ffcc80', '#80cbc4', '#bcaaa4', '#aed581', '#ce93d8',
+];
 
 const AvgRatingsByOccupation = () => {
   const [data, setData] = useState([]);
@@ -50,7 +56,14 @@ const AvgRatingsByOccupation = () => {
             <YAxis dataKey="occupation" type="category" width={150} />
             <Tooltip />
             <Legend />
-            <Bar dataKey="averageRating" fill="#8884d8" />
+            <Bar dataKey="averageRating">
+              {data.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       )}
