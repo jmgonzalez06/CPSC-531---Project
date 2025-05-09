@@ -21,10 +21,15 @@ const MovieResult = () => {
         const headers = lines[0].replace(/"/g, '').split(',');
 
         const movieData = lines.slice(1).map(line => {
-          const values = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g).map(v => v.replace(/^"|"$/g, ''));
+          const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(v => v.replace(/^"|"$/g, '').trim());
+
+          if (values.length !== headers.length) {
+            console.warn('Mismatch in values:', values, 'Expected:', headers);
+          }
+          
           const movie = {};
           headers.forEach((header, i) => {
-            movie[header] = header === 'avgRating' ? parseFloat(values[i]) : values[i];
+            movie[header] = ['avgRating', 'numRatings'].includes(header) ? parseFloat(values[i]) : values[i];
           });
           return movie;
         });
@@ -145,8 +150,8 @@ const MovieResult = () => {
           <h3>Title: {selectedMovie.title}</h3>
           <p><strong>Genre:</strong> {selectedMovie.genre}</p>
           <p><strong>Avg Rating:</strong> {renderStars(selectedMovie.avgRating)}</p>
-          <p><strong>Votes:</strong> {selectedMovie.numRatings}</p>
-          <p><strong>Popular:</strong> {selectedMovie.isPopular}</p>
+          <p><strong>Votes:</strong> {Number.isFinite(selectedMovie.numRatings) ? selectedMovie.numRatings.toLocaleString() : 'N/A'}</p>
+
         </div>
       )}
     </div>

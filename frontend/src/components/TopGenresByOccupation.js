@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer,
+  BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, Cell
 } from 'recharts';
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#a4de6c', '#d0ed57', '#8dd1e1'];
@@ -40,10 +40,12 @@ const TopGenresByOccupation = () => {
   const genres = [...new Set(data.map(item => item.genre))];
   const filteredData = data.filter(item => item.genre === selectedGenre);
 
-  const pieData = filteredData.map(({ occupation, rating }) => ({
+  const barData = filteredData.map(({ occupation, rating }) => ({
     name: occupation,
     value: rating,
   }));
+
+  console.log('Filtered Bar Data:', barData);
 
   return (
     <div className="p-4 max-w-xl mx-auto">
@@ -60,29 +62,33 @@ const TopGenresByOccupation = () => {
         ))}
       </select>
 
-      {pieData.length > 0 && (
+      {barData.length > 0 && (
         <div style={{ width: '100%', height: 600 }}>
           <ResponsiveContainer>
-            <PieChart>
-              <Pie
-                data={pieData}
-                dataKey="value"
-                nameKey="name"
-                outerRadius={100}
-                label={({ name, value }) => `${name}: ${value.toFixed(2)}`}
-              >
-                {pieData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
+            <BarChart
+              data={barData}
+              layout="vertical"
+              margin={{ top: 20, right: 30, left: 100, bottom: 20 }}
+            >
+              <XAxis type="number" />
+              <YAxis dataKey="name" type="category" />
               <Tooltip formatter={(value) => value.toFixed(2)} />
               <Legend />
-            </PieChart>
+              <Bar
+                dataKey="value"
+                fill="#8884d8"
+                label={{ position: 'right', formatter: (value) => value.toFixed(2) }}
+              >
+                {barData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Bar>
+            </BarChart>
           </ResponsiveContainer>
         </div>
       )}
 
-      {selectedGenre && pieData.length === 0 && (
+      {selectedGenre && barData.length === 0 && (
         <p className="text-gray-500 mt-4">No data available for the selected genre.</p>
       )}
     </div>
