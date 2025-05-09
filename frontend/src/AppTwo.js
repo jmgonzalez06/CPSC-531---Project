@@ -7,7 +7,7 @@ import GenresByAge from './components/GenresByAge';
 import TopGenresByGender from './components/TopGenresByGender';
 import TopGenresByOccupation from './components/TopGenresByOccupation';
 
-import movieImage from './images/movie-list-image.png';
+import movieImage from './images/movie-list-imagev3.png';
 import './AppTwo.css';
 
 const TMDB_API_KEY = 'YOUR_TMDB_API_KEY'; // Replace with your actual TMDb API key

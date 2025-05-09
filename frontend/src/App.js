@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import logo from './logo.svg';
-import movieImage from './images/movie-list-image.png';
+import movieImage from './images/movie-list-imagev3.png';
 import './App.css';
 
 import fullStar from './images/full-star.png';
